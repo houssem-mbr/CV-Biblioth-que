@@ -38,6 +38,7 @@ class User extends Authenticatable
     ];
 
     public function cvs() {
-        return $this->hasMany('App\Cv');
+        return $this->hasMany('App\Article');
     }
+
 }

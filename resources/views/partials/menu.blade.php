@@ -1,8 +1,13 @@
  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
+                 @if (Auth::user())
+                <a class="navbar-brand" href="{{ url('home') }}">
+                   {{ Auth::user()->name }}
+                   @else
                 <a class="navbar-brand" href="{{ url('/') }}">
-                   Houssem Mbr
+                   <img class="logo" src="{{ asset('storage/images/logo.png') }}">
                 </a>
+                 @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -18,28 +23,28 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}"><b>Connexion</b></a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"><b>Inscription</b></a>
                                 </li>
                             @endif
                         @else
                         <li>
-                            <a href="{{ url('cvs') }}" id="navbar" class="nav-link" href="#" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>Mes Cvs</a>
+                            <a href="{{ url('articles') }}" id="navbar" class="nav-link mr-2" href="#" role="button"  aria-haspopup="true" aria-expanded="false" v-pre><span style="font-size: 1.2em"><b>Mes articles</b></span></a>
                         </li>
                             <li class="nav-item dropdown">
                                    
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                   <span style="font-size: 1.2em"> <b>{{ Auth::user()->name }}</b></span> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <b>Déconnexion</b>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

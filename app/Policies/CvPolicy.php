@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\User;
-use App\Cv;
+use App\Article;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CvPolicy
@@ -11,25 +11,25 @@ class CvPolicy
     use HandlesAuthorization;
 
     public function before($user, $ability){
-        if ($user->is_admin and $ability !='delete') {
+        if ($user->is_admin /*and $ability !='delete'*/) {
             return true;
         }
     }
 
     /**
-     * Determine whether the user can view the cv.
+     * Determine whether the user can view the articles.
      *
      * @param  \App\User  $user
-     * @param  \App\Cv  $cv
+     * @param  \App\Article  $article
      * @return mixed
      */
-    public function view(User $user, Cv $cv)
+    public function view(User $user, Article $article)
     {
-        return $user->id === $cv->user_id;
+        return $user->id === $article->user_id;
     }
 
     /**
-     * Determine whether the user can create cvs.
+     * Determine whether the user can create articles.
      *
      * @param  \App\User  $user
      * @return mixed
@@ -40,50 +40,50 @@ class CvPolicy
     }
 
     /**
-     * Determine whether the user can update the cv.
+     * Determine whether the user can update the article.
      *
      * @param  \App\User  $user
-     * @param  \App\Cv  $cv
+     * @param  \App\Article  $article
      * @return mixed
      */
-    public function update(User $user, Cv $cv)
+    public function update(User $user, Article $article)
     {
-        return $user->id === $cv->user_id;
+        return $user->id === $article->user_id;
     }
 
     /**
-     * Determine whether the user can delete the cv.
+     * Determine whether the user can delete the article.
      *
      * @param  \App\User  $user
-     * @param  \App\Cv  $cv
+     * @param  \App\Article  $article
      * @return mixed
      */
-    public function delete(User $user, Cv $cv)
+    public function delete(User $user, Article $article)
     {
-        return $user->id === $cv->user_id;
+        return $user->id === $article->user_id;
     }
 
     /**
-     * Determine whether the user can restore the cv.
+     * Determine whether the user can restore the article.
      *
      * @param  \App\User  $user
-     * @param  \App\Cv  $cv
+     * @param  \App\Article  $article
      * @return mixed
      */
-    public function restore(User $user, Cv $cv)
+    public function restore(User $user, Article $article)
     {
         //
     }
 
     /**
-     * Determine whether the user can permanently delete the cv.
+     * Determine whether the user can permanently delete the article.
      *
      * @param  \App\User  $user
-     * @param  \App\Cv  $cv
+     * @param  \App\Article  $article
      * @return mixed
      */
-    public function forceDelete(User $user, Cv $cv)
+    public function forceDelete(User $user, Article $article)
     {
-        return $user->id === $cv->user_id;
+        return $user->id === $article->user_id;
     }
 }

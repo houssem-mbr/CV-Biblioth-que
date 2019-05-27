@@ -24,12 +24,7 @@ class cvRequest extends FormRequest
     public function rules()
     {
         return [
-            'titre' => 'required|min:3',
-            'presentation' => 'required|min:10|max:200',
-            'nomprenom' => 'required|min:3',
-            'domaine' => 'required|min:3',
-            'ecole' => 'required|min:3',
-            'phone' => 'required|min:8'
+           
         ];
     }
 }

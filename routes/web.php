@@ -15,17 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('cvs', 'CvController@index');
-Route::get('cvs/create', 'CvController@create');
-Route::post('cvs', 'CvController@store');
-Route::get('cvs/{id}/edit', 'CvController@edit');
-Route::put('cvs/{id}', 'CvController@update');
-Route::delete('cvs/{id}', 'CvController@destroy');
-Route::get('cvs/{id}/show', 'CvController@show');
+Route::get('articles', 'ArController@index');
+Route::get('articles/create', 'ArController@create');
+Route::post('articles', 'ArController@store');
+Route::get('articles/{id}/edit', 'ArController@edit');
+Route::put('articles/{id}', 'ArController@update');
+Route::delete('articles/{id}', 'ArController@destroy');
+Route::get('articles/{id}/show', 'ArController@show');
+
+Route::get('category/categoryAdd', 'ArController@createCategory');
+Route::post('category/categoryAdd', 'ArController@storeCategory');
+
+Route::get('category/{id}/showCategory', 'ArController@showCategory');
 
 
-//Route::resource('cvs', 'CvController');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'GuestController@showArticlesGuest');
+Route::get('//{id}/showArticleFront', 'GuestController@showArticleFront');

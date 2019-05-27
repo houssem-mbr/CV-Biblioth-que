@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Houssem CVS</title>
+    <title>Houssem Blog</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -36,5 +36,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('javascripts')
 </body>
 </html>
